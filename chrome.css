@@ -1,6 +1,4 @@
-/* Cole este código no seu userChrome.css ou no arquivo chrome.css do seu mod do Zen Browser */
-
-/* Remove a linha divisória/barra acima dos elementos */
+/* Remove a linha divisória acima dos elementos */
 hr,
 menuseparator,
 .panel-subview-body hr,
@@ -8,19 +6,41 @@ toolbarseparator {
     display: none !important;
 }
 
-/* Centraliza o botão/texto "Limpar" */
-/* Ajuste o container pai para flexbox e centralize o conteúdo */
-.panel-header,
-.subviewbutton,
-[id*="clear"] {
+/* Oculta o texto "Limpar" mantendo o botão acessível */
+[id*="clear"],
+.cleartab-button,
+.subviewbutton[label="Limpar"] {
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
     text-align: center !important;
+    font-size: 0 !important; /* Esconde o texto original */
+    padding: 6px 0 !important;
+    margin: 0 auto !important;
+    cursor: pointer !important;
+    width: 100% !important;
 }
 
-/* Garante que o texto/botão Limpar fique alinhado ao centro */
-span:-moz-locale-dir(ltr), 
-.cleartab-button {
-    text-align: center !important;
+/* Adiciona e centraliza o ícone de lixeira (SVG inline) */
+[id*="clear"]::before,
+.cleartab-button::before,
+.subviewbutton[label="Limpar"]::before {
+    content: "" !important;
+    display: inline-block !important;
+    width: 16px !important;
+    height: 16px !important;
+    background-color: currentColor !important;
+    -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>') no-repeat center !important;
+    mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>') no-repeat center !important;
+    -webkit-mask-size: contain !important;
+    mask-size: contain !important;
+    opacity: 0.8 !important;
+    transition: opacity 0.2s ease !important;
+}
+
+/* Efeito ao passar o mouse por cima */
+[id*="clear"]:hover::before,
+.cleartab-button:hover::before,
+.subviewbutton[label="Limpar"]:hover::before {
+    opacity: 1 !important;
 }
