@@ -1,0 +1,26 @@
+/* Cole este código no seu userChrome.css ou no arquivo chrome.css do seu mod do Zen Browser */
+
+/* Remove a linha divisória/barra acima dos elementos */
+hr,
+menuseparator,
+.panel-subview-body hr,
+toolbarseparator {
+    display: none !important;
+}
+
+/* Centraliza o botão/texto "Limpar" */
+/* Ajuste o container pai para flexbox e centralize o conteúdo */
+.panel-header,
+.subviewbutton,
+[id*="clear"] {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+}
+
+/* Garante que o texto/botão Limpar fique alinhado ao centro */
+span:-moz-locale-dir(ltr), 
+.cleartab-button {
+    text-align: center !important;
+}

@@ -1,0 +1,14 @@
+{
+  "manifest_version": 2,
+  "name": "Centralizar Limpar e Remover Linha",
+  "description": "Remove a barra divisória e centraliza o botão Limpar.",
+  "version": "1.0",
+  "author": "Maxwell",
+  "browser_specific_settings": {
+    "zen": {
+      "styles": {
+        "chrome.css": "chrome.css"
+      }
+    }
+  }
+}
